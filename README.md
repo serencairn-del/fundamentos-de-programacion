@@ -9,5 +9,6 @@ Los archivos hasta el momento son:
         1. Actividad 1 (Aquí se encuentra la Calculadora Tiempo Digital)
         2. Ejercicios_Extras (Aquí se encuentran los ejercicios extras de la semana 1)
 
-    * Los archivos sueltos son lo que se ha trabajado en clase (semana 1).
+2. Carpeta Semana 2
+    * En esta carpeta hay tres subcarpetas: Actividad2_CobroMuseo donde está la actividad CobroEntradaMuseo.py; Actividades_en_clase donde estan los ejemplos vistos en clase y Extras_semana2 donde están los ejercicios.
     
