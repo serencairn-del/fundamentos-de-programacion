@@ -21,11 +21,16 @@ while opcionmenu:
     print("4. Cerrar menu")
 
     try:
-        opcionmenu = int(input("Seleccione el sabor o salir(1 a 4): "))
+        opcionmenu = int(input("Ingrese la cantidad de cajas: "))
+    except ValueError:
+        print("Error: ingrese solo numeros enteros.\n")
+        continue
 
     if 1 <= opcionmenu >=3:
         try:
             cantidad_c = int(input("Ingresa cuántas cajas de Pocky quiere el cliente: "))
+        except ValueError:
+            print("Error: Ingrese una cantidad valida.\n")
 
             if cantidad_c <= 0:
                 print("Error: La cantidad de cajas debe ser un número positivo y mayor a cero.")
@@ -52,11 +57,11 @@ while opcionmenu:
                 if opcionmenu == 1:
                     stk_chocolate = stk_chocolate - cantidad_c
                     if stk_chocolate <= 6:
-                        print("¡ALERTA! EL PCKY DE CHOCOLATE SE ESTA ACABANDO. HAY QUE RE-ORDENAR.")
+                        print("¡ALERTA! EL PoCKY DE CHOCOLATE SE ESTA ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS.")
                     elif opcionmenu == 2:
                         stk_matcha = stk_matcha - cantidad_c
                         if stk_matcha <= 6:
-                            print("¡ALERTA! EL POCKY DE MATCHA SE ESTÁ ACABDO. HAY QUE PEDIR MÁS SUMINISTROS.")
+                            print("¡ALERTA! EL POCKY DE MATCHA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS.")
                     elif opcionmenu == 3:
                         stk_fresa = stk_fresa - cantidad_c
                         if stk_fresa <=6:
@@ -69,13 +74,15 @@ while opcionmenu:
                     print(f"Importe original:   ${precio_original}")
                     print(f"El descuento aplicado (12%):    -$")
                     print(f"IVA:    ${impuestoIVA}")
-                    print(f"Total final:    ${totaldepagoCIVA}")
+                    print(f"Total a Pagar:    ${totaldepagoCIVA}")
                 else:
-                    print("EL ALMACEN NO CUENTA CON EXISTENCIAS SUFIECINTES")
+                    print("EL ALMACEN NO CUENTA CON EXISTENCIAS SUFIECIENTES")
             elif opcionmenu == 4:
                 print("Cerrando sistema...")
             else:
-                print("")
+                print("Opción invalida en el sitema.")
+
+print("Caja cerrada.")
 
 
     

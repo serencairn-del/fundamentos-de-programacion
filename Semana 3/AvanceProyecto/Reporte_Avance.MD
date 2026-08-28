@@ -56,7 +56,99 @@ El local tiene perdidas financieras y desabasto constante de los sabores popular
 
 ## 5. Diseño de algoritmo (Diagrama de flujo sacado de Psent):
 
-* **Hay que insertar imagen... ¿cómo? ya veré xD**
+Algoritmo LocalPockyYEM
+	Definir stk_chocolate, stk_matcha, stk_fresa, cantidad c, opcionmenu Como Entero
+	Definir preciopockys, precio_original, descuentoA, impuestoIVA, totalpagoCIVA Como Real
+    Definir nombre_responsable Como Cadena
+    Definir stockdisponible Como Entero
+	// Inicialización de Variables
+    stk_chocolate <- 21
+    stk_fresa <- 18
+    stk_matcha <- 15
+    preciopockys <- 48.0
+    nombre_responsable <- "Aoki Takano"
+    opcionmenu <- 0
+    
+    // Ciclo de Operación 
+    Mientras opcionmenu <> 4 Hacer
+        Escribir "MENU DE LOCAL POCKY YEM"
+        Escribir "Cajero de turno: ", nombre_responsable
+        Escribir "1. Pocky Chocolate (Stock: ", stk_chocolate, ")"
+        Escribir "2. Pocky Matcha (Stock: ", stk_matcha, ")"
+        Escribir "3. Pocky Fresa (Stock: ", stk_fresa, ")"
+        Escribir "4. Cerrar menú"
+        Escribir "Seleccione una opcion del menu:"
+        Leer opcionmenu
+        
+        Si opcionmenu >= 1 Y opcionmenu <= 3 Entonces
+            Escribir "Ingresa cuántas cajas de Pocky quiere el cliente:"
+            Leer cantidad_c
+            
+            Si cantidad_c <= 0 Entonces
+                Escribir "Error: La cantidad de cajas debe ser un número positivo y mayor a cero."
+            Sino
+                // Asignación de Stock 
+                Segun opcionmenu Hacer
+                    1: stockdisponible <- stk_chocolate
+                    2: stockdisponible <- stk_matcha
+                    3: stockdisponible <- stk_fresa
+                FinSegun
+                
+                // Modelo de Entrada-Proceso-Salida
+                Si cantidad_c <= stockdisponible Entonces
+                    precio_original <- cantidad_c * preciopockys
+                    
+                    // Condicional de Descuento 
+                    Si cantidad_c > 6 Entonces
+                        descuentoA <- precio_original * 0.12
+                    Sino
+                        descuentoA <- 0.0
+                    FinSi
+                    
+                    impuestoIVA <- (precio_original - descuentoA) * 0.16
+                    totalpagoCIVA <- (precio_original - descuentoA) + impuestoIVA
+                    stockdisponible <- stockdisponible - cantidad_c
+                    
+                    // Actualización física de inventarios y alertas
+                    Segun opcionmenu Hacer
+                        1:
+                            stk_chocolate <- stockdisponible
+                            Si stk_chocolate <= 6 Entonces
+                                Escribir "¡ALERTA! EL POCKY DE CHOCOLATE SE ESTA ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS."
+                            FinSi
+                        2:
+                            stk_mactha <- stockdisponible
+                            Si stk_mactha <= 6 Entonces
+                                Escribir "¡ALERTA! EL POCKY DE MATCHA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS."
+                            FinSi
+                        3:
+                            stK_fresa <- stockdisponible
+                            Si stk_fresa <= 6 Entonces
+                                Escribir "¡ALERTA! EL POCKY DE FRESA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINSITROS."
+                            FinSi
+                    FinSegun
+                    
+                    // Salida del resumen de venta
+                    Escribir "--- REGISTRO DE VENTA ---"
+                    Escribir "Importe original:  $", precio_original
+                    Escribir "El descuento aplicado (12%): $", descuentoA
+                    Escribir "IVA: $", impuestoIVA
+                    Escribir "Total a Pagar:  $", totalpagoCIVA
+                    Escribir "------------------------"
+                Sino
+                    Escribir "EL ALMACEN NO CUENTA CON EXISTENCIAS SUFICIENTES"
+                FinSi
+            FinSi
+        Sino
+            Si opcionmenu = 4 Entonces
+                Escribir "Cerrando sistema"
+            FinSi
+        FinSi
+        Escribir "Opción invalida en el sistema."
+    FinMientras
+    Escribir "CAJA CERRADA"
+	
+FinAlgoritmo
 
 ---
 
