@@ -27,17 +27,27 @@ El local tiene perdidas financieras y desabasto constante de los sabores popular
 ## 2. Listado de requerimientos obligatorios:
 
 * **R1:** Desplegar un menú donde se muestre los tres sabores que maneja el local.
-    * *Variable:* pendiente
+    * *Variable:* opcionmenu (**Entero**)
 * **R2:** Pedir al cajero la cantidad exacta de cajas que se desean adquirir.
-    * *Variable:* pendiente
+    * *Variable:* cantidad_c (**Entero**)
 * **R3:** El sistema tiene que validar la existencia fisica del sabor en el stock actual antes de proceder a la venta.
-    * *Variable:* pendiente
+    * *Variable:* "stk_chocolate", "stk_matcha", "stk_fresa" (**Entero**)
 * **R4:** Calcular el subtotal neto haciendo los descuentos si excede las 6 unidades (cajas).
-    * *Variable:* pendiente
-* **R5:** Desglosar/mostrar? el cobro final incluyendo el IVA (16%); es importante primero realizar el descuento porque sino le cobraremos de más al cliente xD.
-    * *Variable:* pendiente
-* **R6:** Hay que registrar el nombre del cajero responsable de la terminal.
-    * *Variable:* pendiente
+    * *Variable:* "precio_original", "preciopockys" (**Real/Flotante**)
+* **R5:** Calcular el descuento y aplicar el cobro final incluyendo el IVA (16%).
+    * *Variable:* "descuentoA", "impuestoIVA", "totalpagoCIVA" (**Real/Flotante**)
+* **R6:** Registrar el nombre del cajero responsable de la terminal.
+    * *Variable:* "nombre_responsable" (**Cadena de texto/String**)
+
+---
+
+## 3. Operadores de lenguaje:
+
+* **Asignación ("="/"<-"):** Guarda valores iniciales y almacena los resultados de las fórmulas matemáticas.
+* **Multiplicación ("*"):** Se usa para calcular el importe tomando el precio base.
+* **Resta("-"):** Se emplea para disminuir cada stock tras concretar una venta.
+* **Relacionales("<=", ">", "<>", "==", "!="):** Estos operadores evaluan si hay mercancia en el almacen, si aplica el desceunto y para controlar el bucle while.
+* **Lógicos("Y", "and"):** Verifican que la opción ingresada por teclado este en el rango de opciones validas (1 a 3).
 
 ---
 
@@ -50,109 +60,187 @@ El local tiene perdidas financieras y desabasto constante de los sabores popular
 
 ## 4. Diseño de algoritmo (Pseudocódigo en Psent):
 
-* **Código Psent:** Pendiente.
+Algoritmo LocalPockyYEM
+	Definir stk_chocolate, stk_matcha, stk_fresa, cantidad_c, opcionmenu Como Entero
+	Definir preciopockys, precio_original, descuentoA, impuestoIVA, totaldepagoCIVA Como Real
+	Definir nombre_responsable Como Cadena
+	Definir stockdisponible Como Entero
+	// Vamos a iniciar variables 0_0
+	stk_chocolate <- 21
+	stk_matcha <- 18
+	stk_fresa <- 15
+	nombre_responsable <- "Aoki Takano"
+	opcionmenu <- 0
+	preciopockys <- 48.0
+	// Primer bloque completado...
+	// Aquí empieza el segundo bloque (el proceso)
+	Mientras opcionmenu<>4 Hacer
+		Escribir "MENU DE LOCAL POCKY YEM"
+		Escribir "Cajero de turno: ", nombre_responsable
+		Escribir "1. Pocky de Chocolate (Existencia: ", stk_chocolate, ")"
+		Escribir "2. Pocky de Matcha (Existencia: ", stk_matcha, ")"
+		Escribir "3. Pocky de Fresa (Existencia: ", stk_fresa, ")"
+		Escribir "4. Cerrar menu"
+		Escribir "Ingrese la opcion del menu:"
+		Leer opcionmenu
+		Si opcionmenu>=1 Y opcionmenu<=3 Entonces
+			Escribir "Ingresa cuántas cajas de Pocky quiere el cliente:"
+			Leer cantidad_c
+			Si cantidad_c<=0 Entonces
+				Escribir "Error: La cantidad de cajas debe ser un número positivo y mayor a cero."
+			SiNo
+				Si opcionmenu=1 Entonces
+					stockdisponible <- stk_chocolate
+				SiNo
+					Si opcionmenu=2 Entonces
+						stockdisponible <- stk_matcha
+					SiNo
+						stockdisponible <- stk_fresa
+					FinSi
+				FinSi
+				Si cantidad_c<=stockdisponible Entonces
+					precio_original <- cantidad_c*preciopockys
+					Si cantidad_c>6 Entonces
+						descuentoA <- precio_original*0.12
+					SiNo
+						descuentoA <- 0.0
+					FinSi
+					impuestoIVA <- (precio_original-descuentoA)*0.16
+					totaldepagoCIVA <- (precio_original-descuentoA)+impuestoIVA
+					Si opcionmenu=1 Entonces
+						stk_chocolate <- stk_chocolate-cantidad_c
+						Si stk_chocolate<=6 Entonces
+							Escribir "¡ALERTA! EL PoCKY DE CHOCOLATE SE ESTA ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS."
+						FinSi
+					SiNo
+						Si opcionmenu=2 Entonces
+							stk_matcha <- stk_matcha-cantidad_c
+							Si stk_matcha<=6 Entonces
+								Escribir "¡ALERTA! EL POCKY DE MATCHA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS."
+							FinSi
+						SiNo
+							stk_fresa <- stk_fresa-cantidad_c
+							Si stk_fresa<=6 Entonces
+								Escribir "¡ALERTA! EL POCKY DE FRESA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINSITROS."
+							FinSi
+						FinSi
+					FinSi
+					// CERRAMOS EL PROCESO Y VAMOS POR EL ÚLTIMO BLOQUE: MOSTRAR UN "REGISTRO" DE LO QUE SE HIZO
+					// Y quiero que se vea decente... (no amontonado ;-;)
+					Escribir ""
+					Escribir "		REGISTRO DE VENTA       "
+					Escribir "Importe original:   $", precio_original
+					Escribir "El descuento aplicado (12%): -$", descuentoA
+					Escribir "IVA:    $", impuestoIVA
+					Escribir "Total a Pagar:    $", totaldepagoCIVA
+				SiNo
+					Escribir "EL ALMACEN NO CUENTA CON EXISTENCIAS SUFIECIENTES"
+				FinSi
+			FinSi
+		SiNo
+			Si opcionmenu=4 Entonces
+				Escribir "Cerrando sistema..."
+			SiNo
+				Escribir "Opción invalida en el sitema."
+			FinSi
+		FinSi
+		Escribir ""
+	FinMientras
+	Escribir "Caja cerrada."
+FinAlgoritmo
 
 ---
 
 ## 5. Diseño de algoritmo (Diagrama de flujo sacado de Psent):
 
-Algoritmo LocalPockyYEM
-	Definir stk_chocolate, stk_matcha, stk_fresa, cantidad c, opcionmenu Como Entero
-	Definir preciopockys, precio_original, descuentoA, impuestoIVA, totalpagoCIVA Como Real
-    Definir nombre_responsable Como Cadena
-    Definir stockdisponible Como Entero
-	// Inicialización de Variables
-    stk_chocolate <- 21
-    stk_fresa <- 18
-    stk_matcha <- 15
-    preciopockys <- 48.0
-    nombre_responsable <- "Aoki Takano"
-    opcionmenu <- 0
-    
-    // Ciclo de Operación 
-    Mientras opcionmenu <> 4 Hacer
-        Escribir "MENU DE LOCAL POCKY YEM"
-        Escribir "Cajero de turno: ", nombre_responsable
-        Escribir "1. Pocky Chocolate (Stock: ", stk_chocolate, ")"
-        Escribir "2. Pocky Matcha (Stock: ", stk_matcha, ")"
-        Escribir "3. Pocky Fresa (Stock: ", stk_fresa, ")"
-        Escribir "4. Cerrar menú"
-        Escribir "Seleccione una opcion del menu:"
-        Leer opcionmenu
-        
-        Si opcionmenu >= 1 Y opcionmenu <= 3 Entonces
-            Escribir "Ingresa cuántas cajas de Pocky quiere el cliente:"
-            Leer cantidad_c
-            
-            Si cantidad_c <= 0 Entonces
-                Escribir "Error: La cantidad de cajas debe ser un número positivo y mayor a cero."
-            Sino
-                // Asignación de Stock 
-                Segun opcionmenu Hacer
-                    1: stockdisponible <- stk_chocolate
-                    2: stockdisponible <- stk_matcha
-                    3: stockdisponible <- stk_fresa
-                FinSegun
-                
-                // Modelo de Entrada-Proceso-Salida
-                Si cantidad_c <= stockdisponible Entonces
-                    precio_original <- cantidad_c * preciopockys
-                    
-                    // Condicional de Descuento 
-                    Si cantidad_c > 6 Entonces
-                        descuentoA <- precio_original * 0.12
-                    Sino
-                        descuentoA <- 0.0
-                    FinSi
-                    
-                    impuestoIVA <- (precio_original - descuentoA) * 0.16
-                    totalpagoCIVA <- (precio_original - descuentoA) + impuestoIVA
-                    stockdisponible <- stockdisponible - cantidad_c
-                    
-                    // Actualización física de inventarios y alertas
-                    Segun opcionmenu Hacer
-                        1:
-                            stk_chocolate <- stockdisponible
-                            Si stk_chocolate <= 6 Entonces
-                                Escribir "¡ALERTA! EL POCKY DE CHOCOLATE SE ESTA ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS."
-                            FinSi
-                        2:
-                            stk_mactha <- stockdisponible
-                            Si stk_mactha <= 6 Entonces
-                                Escribir "¡ALERTA! EL POCKY DE MATCHA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS."
-                            FinSi
-                        3:
-                            stK_fresa <- stockdisponible
-                            Si stk_fresa <= 6 Entonces
-                                Escribir "¡ALERTA! EL POCKY DE FRESA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINSITROS."
-                            FinSi
-                    FinSegun
-                    
-                    // Salida del resumen de venta
-                    Escribir "--- REGISTRO DE VENTA ---"
-                    Escribir "Importe original:  $", precio_original
-                    Escribir "El descuento aplicado (12%): $", descuentoA
-                    Escribir "IVA: $", impuestoIVA
-                    Escribir "Total a Pagar:  $", totalpagoCIVA
-                    Escribir "------------------------"
-                Sino
-                    Escribir "EL ALMACEN NO CUENTA CON EXISTENCIAS SUFICIENTES"
-                FinSi
-            FinSi
-        Sino
-            Si opcionmenu = 4 Entonces
-                Escribir "Cerrando sistema"
-            FinSi
-        FinSi
-        Escribir "Opción invalida en el sistema."
-    FinMientras
-    Escribir "CAJA CERRADA"
-	
-FinAlgoritmo
+![Diagrama de flujo Local Pocky YEM](LocalPockyYEM.png)
+
 
 ---
 
 ## 6. Prototipo del código fuente (Python):
 
-* ***Pendiente, también... ¬¬**
+#Vamos a iniciar variables 0_0
+
+stk_chocolate = 21
+stk_matcha = 18
+stk_fresa = 15
+
+nombre_responsable = "Aoki Takano"
+
+opcionmenu = 0
+preciopockys = 48
+
+#Primer bloque completado... 
+#Aquí empieza el segundo bloque (el proceso)
+
+while opcionmenu !=4:
+    print("MENU DE LOCAL POCKY YEM")
+    print(f"Cajero de turno: {nombre_responsable}")
+    print(f"1. Pocky de Chocolate (Existencia: {stk_chocolate})")
+    print(f"2 Pocjy de Matcha (Existencia: {stk_matcha})")
+    print(f"3. Pcky de Fresa (Existencia: {stk_fresa})")
+    print("4. Cerrar menu")
+
+ 
+    opcionmenu = int(input("Ingrese el sabor requerido por el cliente: "))
+
+
+    if 1 <= opcionmenu <=3:
+        cantidad_c = int(input("Ingresa cuántas cajas de Pocky quiere el cliente: "))
     
+
+        if cantidad_c <= 0:
+            print("Error: La cantidad de cajas debe ser un número positivo y mayor a cero.")
+            continue
+
+        if opcionmenu == 1:
+            stockdisponible = stk_chocolate
+        elif opcionmenu == 2: 
+            stockdisponible = stk_matcha
+        else:
+            stockdisponible = stk_fresa
+
+        if cantidad_c <= stockdisponible:
+            precio_original = cantidad_c * preciopockys
+
+            if cantidad_c > 6:
+                descuentoA = precio_original * 0.12
+            else:
+                descuentoA = 0.0
+
+            impuestoIVA = (precio_original - descuentoA) * 0.16
+            totaldepagoCIVA = (precio_original - descuentoA) + impuestoIVA
+
+            if opcionmenu == 1:
+                stk_chocolate = stk_chocolate - cantidad_c
+                if stk_chocolate <= 6:
+                    print("¡ALERTA! EL PoCKY DE CHOCOLATE SE ESTA ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS.")
+            elif opcionmenu == 2:
+                stk_matcha = stk_matcha - cantidad_c
+                if stk_matcha <= 6:
+                    print("¡ALERTA! EL POCKY DE MATCHA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINISTROS.")
+            elif opcionmenu == 3:
+                stk_fresa = stk_fresa - cantidad_c
+                if stk_fresa <=6:
+                    print("¡ALERTA! EL POCKY DE FRESA SE ESTÁ ACABANDO. HAY QUE PEDIR MÁS SUMINSITROS.")
+
+                    # CERRAMOS EL PROCESO Y VAMOS POR EL ÚLTIMO BLOQUE: MOSTRAR UN "REGISTRO" DE LO QUE SE HIZO 
+                    # Y quiero que se vea decente... (no amontonado ;-;)
+
+            print("\n     REGISTRO DE VENTA       ")
+            print(f"Importe original:   ${precio_original:.2f}")
+            print(f"El descuento aplicado (12%): -${descuentoA:.2f}")
+            print(f"IVA:    ${impuestoIVA:.2f}")
+            print(f"Total a Pagar:    ${totaldepagoCIVA:.2f}")
+        else:
+            print("EL ALMACEN NO CUENTA CON EXISTENCIAS SUFIECIENTES")
+
+    elif opcionmenu == 4:
+        print("Cerrando sistema...")
+    else:
+        print("Opción invalida en el sitema.")
+
+print("Caja cerrada.")
+    
+---
