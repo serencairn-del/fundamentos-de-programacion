@@ -18,29 +18,34 @@ for r in range(1,11):
         fls.append(r * c)
     tbl.append(fls)
 
+print("     TABLA DE PITAGORAS\n")
+
+
 def tablaimp(tbl):
-    for f  in tbl:
+    for f in tbl:
         for cd in f:
             print(cd, end="\t")
         print()
+            
 
 def consultaR(tbl, ren, col):
     rel = tbl[ren -1][col -1]
     return rel
 
+print("     " + "-" * 75)
+
+
 tablaimp(tbl)
 
+print()
+
+
 entrada1f = int(input("Ingresa el primer valor: "))
-if entrada1f <1 or entrada1f >10:
-    print("Ingresa solo valores entre 1 y 10")
-    # Aquí nos falta algo....
 
 entrada2c = int(input("Ingresa el seegundo valor: "))
-if entrada2c <1 or entrada2c >10:
-    print("Ingresa solo valores entre 1 y 10")
-    # Aquí también.... 
-    
 
-respuesta = consultaR(tbl, entrada1f, entrada2c)
-
-print(f"El producto de {entrada1f} x {entrada2c} es: {respuesta}")
+if entrada1f <1 or entrada1f >10 or entrada2c <1 or entrada2c >10:
+    print("Elige números entre 1 y 10: ")
+else:
+        respuesta = consultaR(tbl, entrada1f, entrada2c)
+        print(f"El producto de {entrada1f} x {entrada2c} es: {respuesta}")
