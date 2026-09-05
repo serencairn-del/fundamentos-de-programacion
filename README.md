@@ -14,4 +14,6 @@ Los archivos hasta el momento son:
 
 3. Carpeta Semana 3
     *  Semana 3 tiene tres subcarpetas, en la primera (Atividades-en-clase) contiene un arhivo .ipynb donde está un tipo borrador de los ejercicios practicados en clase; (ArchivosMD) contiene archvios .MD proporcionados por el profesor; (AvanceProyecto) contiene una imagen en .png que es el diagrama de flujo; Practica_semana3.ipynb que son los ejercicios "en limpio" hechos en la semana en clase; Prototipo_inicial.py tiene el código en Python y Reporte_Avance.MD es lo documentado de todo el avance.
-    
+
+4. Carpeta Semana 4
+    * Aquí se encuentran 4 subcarpetas. Donde se encuentran las actividades realizadas en clase, ejemplos vistos en canvas, en clase y archvios MD proporcionados por el profesor. La sub-carpeta "Entregables_S4" contiene los extras semanales y la tabla de piatgoras.  

@@ -32,7 +32,7 @@ def consultaR(tbl, ren, col):
     rel = tbl[ren -1][col -1]
     return rel
 
-print("     " + "-" * 75)
+print("" + "-" * 75)
 
 
 tablaimp(tbl)
