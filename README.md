@@ -17,3 +17,6 @@ Los archivos hasta el momento son:
 
 4. Carpeta Semana 4
     * Aquí se encuentran 4 subcarpetas. Donde se encuentran las actividades realizadas en clase, ejemplos vistos en canvas, en clase y archvios MD proporcionados por el profesor. La sub-carpeta "Entregables_S4" contiene los extras semanales y la tabla de piatgoras.  
+
+5. Carpeta Semana 5
+    * Contiene 3 subcarpetas. Contienen actividades en clase y archivos MD proporcionados por el profesor. En "Entregables_S5" se encuentra la actividad 4 (menu modular) y en extras parte y parte 2 los ejercicios semanles y los desafios extra. c:
