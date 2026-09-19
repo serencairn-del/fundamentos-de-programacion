@@ -20,3 +20,9 @@ Los archivos hasta el momento son:
 
 5. Carpeta Semana 5
     * Contiene 3 subcarpetas. Contienen actividades en clase y archivos MD proporcionados por el profesor. En "Entregables_S5" se encuentra la actividad 4 (menu modular) y en extras parte y parte 2 los ejercicios semanles y los desafios extra. c:
+
+6. Carpeta Semana 6
+    * Contiene 3 subcarpetas. 
+    * La primera (ArchivosMD) contiene el material proporcionado por el profesor. 
+    * La segunda (Certificacion) contiene una subcarpeta: galeria, donde están las imagenes en png y el archivo (capturas.md) donde se adjutan las capturas solicitadas por el profesor correspondientes al curso de CISCO. 
+    * La tercera (Entregables) contiene un cuaderno ipynb donde se encuentran los 25 ejercicios por castigo.

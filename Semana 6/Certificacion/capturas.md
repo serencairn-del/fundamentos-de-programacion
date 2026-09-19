@@ -18,8 +18,4 @@
 ![Certificado](./galeria/certificado.png)
 ---
 
-## Enlace de respaldo
-[Descargar Certificado en PDF](./documentacion/CCISCO.pdf)
----
-
 ### Nota: todos los archivos de imagen están respaldados localmente dentro de la sub-carpeta `galeria`.
