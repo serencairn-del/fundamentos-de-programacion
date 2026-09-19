@@ -19,5 +19,7 @@
 ---
 
 ## Enlace de respaldo
-
+[Descargar Certificado en PDF](./Documentación/CCISCO.pdf)
 ---
+
+### Nota: todos los archivos de imagen están respaldados localmente dentro de la sub-carpeta `galeria`.
