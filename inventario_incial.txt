@@ -1,0 +1,5 @@
+REPORTE GENERADO EL 12/12/2026 POR CAJERO: AKOI TakaNO
+Existencias actuales en inventario: 
+Chocolate: 12 cajas
+Matcha: 18 cajas
+Fresa: 15 cajas
