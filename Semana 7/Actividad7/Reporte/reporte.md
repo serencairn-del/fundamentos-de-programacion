@@ -77,7 +77,10 @@ En esta sección se detalla cómo la arquitectura del código alojado en un cuad
 
 * Solución aplicada: Se integró .strip().lower() al final del input(). Esto convierte de forma inmediata cualquier entrada a minúsculas, garantizando que el flujo reconozca la respuesta del operador sin importar cómo sea escrita.
 
+
+### ERROR:
 ![EvidenciaCicloInfinito](CapturaBucle.png)
+### SOLUCIÓN:
 ![EvidenciaSolucionCodigo](CapturaBucleSolucionado.png)
 
 ### 3.3 CONTROL DE CALIDAD: OPTIMIZACIÓN DE FECHA
@@ -86,7 +89,9 @@ En esta sección se detalla cómo la arquitectura del código alojado en un cuad
 
 * Solución aplicada: Se modificó la captura para recibir cadenas de texto iniciales y evaluarlas con la función len(). El sistema ahora exige estrictamente que el día tenga 2 dígitos, el mes 2 dígitos y el año 4 dígitos. Si no se cumple, el bloque try-except deniega el acceso y obliga al usuario a reconfigurar los datos, además de que se le permite modificar la fecha antes de confirmarla.
 
+### ERROR:
 ![FormatoIncorrectoFecha](CapturaFechaErronea.png)
+### SOLUCIÓN:
 ![CodigoImplementaFechaCorrecta](CapturaCodigoFechaCorrecta.png)
 
 ### 3.4 ERROR AL LEER UN ARCHIVO DE TEXTO
@@ -95,13 +100,16 @@ En esta sección se detalla cómo la arquitectura del código alojado en un cuad
 
 * Solución aplicada: Se identificó un error de dedo en la línea: with open("inventario_incial.txt", mode="w", encoding="utf-8") as arhiv_inv: y paso a ser corregida y quedó como: with open("inventario_inicial.txt", mode="w", encoding="utf-8") as arhiv_inv:.
 
+### ERROR:
 ![ArchivoInexistenteError](CapturaErrorLecturaA.png)
+### SOLUCIÓN:
 ![LecturaExitosa](CapturaSolErrorLA.png)
 
 ### 3.5 PERSISTENCIA REAL DE LOS ARCHIVOS DE TEXTO
 
 A continuación se muestra como evidencia el contenido del archivo ventas_diarias.txt tras procesar transacciones en la terminal, demostrando la integración automática de la tupla de fecha y el nombre del cajero:
 
+### HISTORIAL DE VENTAS:
 ![HistoriasVentas](CapturaHistorialVentas.png)
 
 ---
