@@ -27,9 +27,11 @@ El **Local Pocky YEM** enfrentaba pérdidas financieras recurrentes y un desabas
 
 2. Si se usa el programa por primera vez el archivo "inventario_inicial.txt" no estará disponible, se puede hacer la venta y se registran los cambios, pero si no se hace el reporte manual (["3", "⚝ Generar reporte manual del estado del almacén"],) no se creará el archivo. Los demás archivos registran y se leen sin problema.
 
-3. Las operaciones matemáticas están basadas y hechas en base al peso (MXN) siendo la moneda de México.
+3. Una vez creado el archivo, se actualiza en cada venta realizada, pero si se selecciona en el menú de ver archivos justo después de hacer la venta sin generar un reporte manual del estado del almacén el cambio no se verá reflejado. Lo ideal es que después de cada venta se haga un reporte manual para efectuar los cambios en el archivo inventario_inicial.txt; si no se hace y se efectua otra venta no generá ningún error, pero la actualización del archivo estaría en destiempo.
 
-4. El precio de los pockys y la cantidad de cajas se cambio para evitar errores de lógica en cuanto a precio y para manejar un almacen con mayor cantidad de cajas disponibles.
+4. Las operaciones matemáticas están basadas y hechas en base al peso (MXN) siendo la moneda de México.
+
+5. El precio de los pockys y la cantidad de cajas se cambio para evitar errores de lógica en cuanto a precio y para manejar un almacen con mayor cantidad de cajas disponibles.
 
 
 ---

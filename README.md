@@ -26,3 +26,15 @@ Los archivos hasta el momento son:
     * La primera (ArchivosMD) contiene el material proporcionado por el profesor. 
     * La segunda (Certificacion) contiene una subcarpeta: galeria, donde están las imagenes en png y el archivo (capturas.md) donde se adjutan las capturas solicitadas por el profesor correspondientes al curso de CISCO. 
     * La tercera (Entregables) contiene un cuaderno ipynb donde se encuentran los 25 ejercicios por castigo.
+
+7. Carpeta Semana 7
+    * Contiene 3 subcarpetas:
+        * Actividad7: Contiene los cuatro archivos de texto, uno creado a través del programa (inventario_inicial.txt) y los demás adjuntados y creados por separado. El cuaderno de jupyter (.ipynb) titulado como: "EntregaFinalProyecto" almacena el código del proyecto final. 
+            * La subcarpeta "Reporte" tiene los archivos de imagen adjuntados en el informe solicitado y titulado dentro de la misma carpeta como: "reporte.md" que es parte de lo solicitado por el profesor.
+
+            * **Esta carpeta (Actividad7) es donde se encuentra todos los documentos requeridos para el proyecto final. ^^**
+
+        * ArchivosMD: Contiene la documentación dada por el profesor.
+        * Ejercicios_Practica: Contiene archivos de texto creados a partir de la prueba de ejercicios en clase alojados en "semana7.ipynb"
+
+        
