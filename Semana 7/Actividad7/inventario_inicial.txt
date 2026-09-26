@@ -1,0 +1,5 @@
+REPORTE GENERADO EL 25/9/2026 POR CAJERO: ESTRELLA Arreola
+Existencias actuales en inventario: 
+Chocolate: 87 cajas
+Matcha: 90 cajas
+Fresa: 93 cajas

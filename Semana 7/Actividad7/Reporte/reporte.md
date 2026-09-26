@@ -1,6 +1,112 @@
-# VERSIÓN PRUEBA DEL PROYECTO FINAL, EL CÓDIGO TERMINADO SERA TRASLADADO A UN CUADERNO DE JUPYTER Y EJECUTADO PARA UNA MEJOR
-# LEGIBILIDAD PARA EL PROFESOR.
+# MATERIA: FUNDAMENTOS DE PROGRAMACIÓN
+# PROYECTO FINAL: SISTEMA AUTOMATIZADO DE GESTIÓN DE INVENTARIO 
+# ORGANIZACIÓN (FICTICIA): LOCAL POCKY YEM
+# ALUMNO: MARIA ESTRELLA ARREOLA YAÑEZ | MATRICULA: 07318142
+# FECHA: 25/09/2026
 
+---
+
+## 1. ANÁLISIS TÉCNICO Y DEFINICIÓN DEL PROBLEMA
+
+### 1.1 DESCRIPCIÓN DE LA PROBLEMÁTICA
+
+El **Local Pocky YEM** enfrentaba pérdidas financieras recurrentes y un desabasto constante de sus sabores más populares (chocolate, matcha y fresa). Esto se debía a que los registros de ventas y el control de existencias en el almacén se realizaban de forma manual durante el cierre diario. El conteo a mano propiciaba errores humanos en el conteo de caja y una severa falta de visibilidad sobre los niveles críticos de inventario en tiempo real.
+
+### 1.2 REGLAS DE NEGOCIO IMPLEMENTADAS
+
+
+1. Punto de venta matricial: El sistema debe operar mediante un menú continuo controlado por un ciclo while cuyas opciones se presentan en un formato de matriz lógica.
+
+2. Estructura fiscal y de mayoreo: Cada transacción debe calcular automáticamente un subtotal neto. Si la compra excede las 6 cajas de cualquier sabor, se aplica un 12% de descuento por mayoreo, cobrando posteriormente el 16% de IVA sobre el importe neto.
+
+3. Alertas automáticas de stock: Cada venta confirmada debe deducir las unidades directamente del inventario. Si el stock restante es inferior o igual a 6 unidades, el sistema debe emitir una alerta preventiva en consola y registrarla en un archivo externo.
+
+### 1.3 REGLAS DEL CÓDIGO IMPLEMENTADO
+
+1. Para iniciar sesión con un nuevo usuario (responsable de caja) es obligatorio cerrar sesión (el sistema) y volver a ingresar para registrarse manualmente (así simulando un cambio de turno); se destaca que el código no implementa bases de datos, por ende no hay una forma de iniciar sesión y resguardar esos datos de ese tipo.
+
+2. Si se usa el programa por primera vez el archivo "inventario_inicial.txt" no estará disponible, se puede hacer la venta y se registran los cambios, pero si no se hace el reporte manual (["3", "⚝ Generar reporte manual del estado del almacén"],) no se creará el archivo. Los demás archivos registran y se leen sin problema.
+
+3. Las operaciones matemáticas están basadas y hechas en base al peso (MXN) siendo la moneda de México.
+
+4. El precio de los pockys y la cantidad de cajas se cambio para evitar errores de lógica en cuanto a precio y para manejar un almacen con mayor cantidad de cajas disponibles.
+
+
+---
+
+## 2. JUSTIFICACIÓN DE LOS 10 REQUERIMIENTOS TÉCNICOS OBLIGATORIOS PROPORCIONADOS POR EL PROFESOR
+
+En esta sección se detalla cómo la arquitectura del código alojado en un cuaderno de jupyter (EntreFinalProyecto.ipynb) da solución a cada requerimiento evaluable de la Fase II:
+
+* R1 & R2 (identificación de usuario y bienvenida dinámica): Se diseñó la función solicitar_nombre_cajero() que aplica filtros .isalpha() para restringir la entrada estrictamente a caracteres alfabéticos. El mensaje formal se genera combinando las cadenas mediante el operador de suma (+) y adaptando los marcos estéticos con la función upper().
+
+* R3 (pantalla de carga): La función pantalla_carga() genera una pausa de interacción controlada de 4.5 segundos empleando un ciclo for y el método time.sleep(1.5). Así se cumple la restricción de durar un máximo de 5 segundos, notificando el progreso en consola de forma dinámica ([33%], [66%], [99%]).
+
+* R4 (menú como matriz): Las opciones de navegación se estructuraron en una lista de listas (matriz de dos dimensiones). Su despliegue en consola se realiza de manera automatizada mediante un ciclo for que extrae los índices de filas y columnas (fila[0] y fila[1]).
+
+* R5 (control de inactividad): Se implementó un ciclo for minuto in range(1, 12) para simular el paso de 10 minutos de inactividad. El flujo se controla mediante las variables que sirven como señal alerta_activa y actividad_detectada. Si transcurre el tiempo, la terminal se bloquea de forma segura y exige la confirmación estricta de "si" o "no". Si responde "no", se obliga a una nueva autenticación de usuario sin requeir un break terminando de forma abrupta el proceso.
+
+* R6 (captura de fecha estructurada): El sistema solicita el día, mes y año, validando mediante len() que posean la longitud exacta (DD/MM/AAAA). Estos valores se empaquetan de forma inmutable a través de la varible: fecha = dia, mes, anio. Esta tupla se integra automáticamente en cada archivo de texto que se crea o modifica.
+
+* R7 & R8 (persistencia en archivos y control de excepciones): El sistema interactúa permanentemente con cuatro archivos .txt (inventario_inicial.txt, ventas_diarias.txt, alertas_stock.txt, registro_caja.txt). Se utiliza with open() en modos de lectura ('r'), sobreescritura ('w') y anexado ('a'). Todo el bloque está protegido con estructuras try-except Exception para capturar de forma amigable errores críticos como archivos inexistentes (FileNotFoundError) o fallos de permisos sin detener la ejecución del programa.
+
+* R9 (depuración técnica con PDB): Se realizó una prueba del código insertando puntos de interrupción con pdb.set_trace() para inspeccionar el estado de las variables y el comportamiento del ciclo principal.
+
+* R10 (comentarios de calidad): El código fuente se encuentra documentado con comentarios descriptivos para facilitar su futuro mantenimiento por parte de terceros; así mismo se intento hacer el mismo código "leible" para que sea claro y no se requiera de comentarios extensos.
+
+---
+
+## 3. EVIDENCIAS DE DEPURACIÓN Y CONTROL DE CALIDAD
+
+### 3.1 BITÁCORA DE DEPURACIÓN TÉCNICA (MÓDULO PDB)
+
+* Punto de Inspección: Insertado inmediatamente antes de la captura de opcion_principal.
+
+* Análisis: En la consola de depuración se ejecutó el comando p nombre, p fecha, p fecha_formateada y p matriz_menu devolviendo exitosamente los valores guardados en las variables y mostrando que los datos extraídos respetaran el orden. 
+
+![DPB1TERMINAL](CapturaDPB1.png)
+![DPB2TERMINAL](CapturaDPB2.png)
+![DPB3TERMINAL-nombre,fecha,matriz](CapturaDPB3.png)
+
+
+### 3.2 CORRECCIÓN DE BUG DE INACTIVIDAD
+
+* Fallo Identificado: Al activarse la alerta de inactividad, si el usuario tecleaba la respuesta en mayúsculas ("SI" o "NO"), las condicionales lógicas no la reconocían y el programa entraba en un ciclo infinito de repetición.
+
+* Solución aplicada: Se integró .strip().lower() al final del input(). Esto convierte de forma inmediata cualquier entrada a minúsculas, garantizando que el flujo reconozca la respuesta del operador sin importar cómo sea escrita.
+
+![EvidenciaCicloInfinito](CapturaBucle.png)
+![EvidenciaSolucionCodigo](CapturaBucleSolucionado.png)
+
+### 3.3 CONTROL DE CALIDAD: OPTIMIZACIÓN DE FECHA
+
+* Fallo Identificado: El programa permitía capturar fechas con formatos inválidos o inconsistentes (ingresar un solo dígito, o más, para el día, mes y año), lo que provocaba que los reportes impresos perdieran formato visual y hubiera errores.
+
+* Solución aplicada: Se modificó la captura para recibir cadenas de texto iniciales y evaluarlas con la función len(). El sistema ahora exige estrictamente que el día tenga 2 dígitos, el mes 2 dígitos y el año 4 dígitos. Si no se cumple, el bloque try-except deniega el acceso y obliga al usuario a reconfigurar los datos, además de que se le permite modificar la fecha antes de confirmarla.
+
+![FormatoIncorrectoFecha](CapturaFechaErronea.png)
+![CodigoImplementaFechaCorrecta](CapturaCodigoFechaCorrecta.png)
+
+### 3.4 ERROR AL LEER UN ARCHIVO DE TEXTO
+
+* Fallo Identificado: Al momento de seleccionar el archivo inventario_inicial.txt la terminal no mostraba el resumen de lo que había dentro capturando un error: ARCHIVO inventario_inicial.txt no existe en la carpeta.
+
+* Solución aplicada: Se identificó un error de dedo en la línea: with open("inventario_incial.txt", mode="w", encoding="utf-8") as arhiv_inv: y paso a ser corregida y quedó como: with open("inventario_inicial.txt", mode="w", encoding="utf-8") as arhiv_inv:.
+
+![ArchivoInexistenteError](CapturaErrorLecturaA.png)
+![LecturaExitosa](CapturaSolErrorLA.png)
+
+### 3.5 PERSISTENCIA REAL DE LOS ARCHIVOS DE TEXTO
+
+A continuación se muestra como evidencia el contenido del archivo ventas_diarias.txt tras procesar transacciones en la terminal, demostrando la integración automática de la tupla de fecha y el nombre del cajero:
+
+![HistoriasVentas](CapturaHistorialVentas.png)
+
+---
+
+## 4. CÓDIGO FUENTE
+
+```python
 # IMPORTACIÓN DE LIBRERIAS ⬩➤
 
 import time # Requerido para la pausa, prove funciones de control de tiempo
@@ -388,3 +494,12 @@ while opcion_principal != "0":
 
 print(f"𖤐 CAJA CERRADA DE FORMA SEGURA. ¡EXCELENTE TURNO, {nombre.upper()}! 𖤐") # CERRRAMOS EL SISTEMA
 print("\n" + "✩₊˚.⋆☾𓃦☽⋆⁺₊✧" * 9)
+
+```
+
+---
+
+## 5. CONCLUSIONES
+
+La automatización del área de cajas y almacén del **Local Pocky YEM** mediante este prototipo final en Python pretende erradicar de forma definitiva los problemas de desabasto y descuadres financieros. Al delegar los cálculos matemáticos de los descuentos e IVA a estructuras de control con formulas matemáticas implementadas en el código, y al asegurar el resguardo de cada operación mediante la persistencia en archivos externos, la organización adquiere una ventaja operativa significativa, garantizando la integridad de su información y mitigando errores humanos. Como desarrolladora de este proyecto me enfrente principalmente a los errores humanos como omitir letras en algunas palabras, métodos para evitar errores en el código y una falta de tiempo para implementar una mejor solución con un código que tenga en cuenta más variables que faltaron implementar en este proyecto. En el futuro espero manejar mejor mis tiempos, mejorar mi falta de errores de escritura para evitar errores (como paso en este caso en la lectura de un archivo) y seguir desarrollando mi pensamiento critico, así como mi capacidad de análisis, para entregar una mejor arquitectura de código mas limpio, legible y profesional. ^^
+

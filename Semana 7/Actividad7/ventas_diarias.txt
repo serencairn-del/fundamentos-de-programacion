@@ -1,0 +1,3 @@
+Fecha: 25/9/2026 | Cajero: ESTRELLA Arreola | Sabor: 1 | Cajas: 12 | Total: $6394.29
+Fecha: 25/9/2026 | Cajero: ESTRELLA Arreola | Sabor: 2 | Cajas: 9 | Total: $4795.72
+Fecha: 25/9/2026 | Cajero: ESTRELLA Arreola | Sabor: 3 | Cajas: 6 | Total: $3633.12
