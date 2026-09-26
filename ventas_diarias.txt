@@ -4,3 +4,8 @@ Fecha: 25/9/2026 | Cajero: Aoki Takano | Sabor: 3 | Cajas: 11 | Total: $538.98
 Fecha: 25/9/2026 | Cajero: AOKI TAKANO | Sabor: 2 | Cajas: 15 | Total: $734.98
 Fecha: 25/9/2026 | Cajero: Estrella Arreola | Sabor: 1 | Cajas: 9 | Total: $440.99
 Fecha: 25/9/2026 | Cajero: Estrella Arreola | Sabor: 3 | Cajas: 5 | Total: $278.40
+Fecha: 21/12/2025 | Cajero: Estrella Arreola | Sabor: 1 | Cajas: 5 | Total: $278.40
+Fecha: 21/12/2025 | Cajero: Estrella Arreola | Sabor: 2 | Cajas: 6 | Total: $334.08
+Fecha: 25/9/2026 | Cajero: Estrella Arreola | Sabor: 1 | Cajas: 9 | Total: $4795.72
+Fecha: 25/9/2026 | Cajero: Estrella Arreola | Sabor: 2 | Cajas: 9 | Total: $4795.72
+Fecha: 25/9/2026 | Cajero: Estrella Arreola | Sabor: 3 | Cajas: 18 | Total: $9591.44

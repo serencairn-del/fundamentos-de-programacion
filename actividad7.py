@@ -8,10 +8,10 @@ import pdb # Requerido para la depuración
 
 # VARIABLES GLOBALES E INVENTARIO INCIAL ⬩➤
 
-stk_chocolate = 21
-stk_matcha = 18
-stk_fresa = 15
-preciopockys = 48
+stk_chocolate = 99
+stk_matcha = 99
+stk_fresa = 99
+preciopockys = 522
 
 # DICCIONARIO PARA LAS OPCIONES DEL MENÚ ASOCIADA A LOS ARCHIVOS
 
@@ -260,6 +260,8 @@ while opcion_principal != "0":
     print(f" 𖤐 MENÚ PRINCIPAL ⬩➤ LOCAL POCKY YEM ")
     print(f" 𖤐 CAJERO RESPONSABLE ⧽ {nombre.upper()}")
     print(f" 𖤐 FECHA DE TRABAJO ⧽ {fecha_formateada}")
+    print(f" 𖤐 VALOR COMERCIAL   ⧽ ${preciopockys}.00 MXN por caja de 9 unidades")
+    print("✩₊˚.⋆☾⋆⁺₊✧|✩₊˚.⋆☾⋆⁺₊✧|✩₊˚.⋆☾⋆⁺₊✧|✩₊˚.⋆☾⋆⁺₊✧|✩₊˚.⋆☾⋆⁺₊✧|✩₊˚.⋆☾⋆⁺₊✧")
 
     # for que recorre y despliega la matriz del menú
     for fila in matriz_menu:
@@ -360,7 +362,7 @@ while opcion_principal != "0":
 
         try:
             #  el modo "w" limpia los datos antiguos y escribe el estado actual de los inventarios
-            with open("inventario_incial.txt", mode="w", encoding="utf-8") as arhiv_inv:
+            with open("inventario_inicial.txt", mode="w", encoding="utf-8") as arhiv_inv:
                 arhiv_inv.write(f"REPORTE GENERADO EL {fecha_formateada} POR CAJERO: {nombre}\n")
                 arhiv_inv.write(f"Existencias actuales en inventario: \n")
                 arhiv_inv.write(f"Chocolate: {stk_chocolate} cajas\n")
