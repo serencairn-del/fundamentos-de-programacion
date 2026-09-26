@@ -1,5 +1,5 @@
-REPORTE GENERADO EL 12/12/2026 POR CAJERO: AKOI TakaNO
+REPORTE GENERADO EL 25/9/2026 POR CAJERO: Estrella Arreola
 Existencias actuales en inventario: 
 Chocolate: 12 cajas
 Matcha: 18 cajas
-Fresa: 15 cajas
+Fresa: 10 cajas
