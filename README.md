@@ -37,4 +37,9 @@ Los archivos hasta el momento son:
         * ArchivosMD: Contiene la documentación dada por el profesor.
         * Ejercicios_Practica: Contiene archivos de texto creados a partir de la prueba de ejercicios en clase alojados en "semana7.ipynb"
 
+8. Carpeta Semana 8
+    * Contiene dos sub caprteas:
+        * PresentacionCanva: Contiene una imagen png y un archivo MD titulado **LinkPresentacion.md** donde se adjunta el link, a través de una imagen usada como botón, con visibilidad pública directo a mi presentación (Canva.com).
+        * PresentacionMD: Contiene el archivo MD donde adjunto las imagenes respaldadas en la sub carpeta -galeria- como prevención en caso de que no se pueda visualizar mi presentación a través del link a canva. Asimismo incluyo la imagen del diagrama de flujo en .png que adjunte en mi presentación en caso de que el profesor requiera ver el diagrama de flujo con claridad.
+ 
         
